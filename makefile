@@ -1,3 +1,5 @@
+.PHONY: hello-triangle
+
 COMPILER = clang++
 CFLAGS = -std=c++17 -fdiagnostics-color=always -Wall -g -Iinclude -Llib
 LIBS = -lglfw.3 -framework OpenGL

@@ -100,25 +100,43 @@ int main()
                   << infoLog << std::endl;
     }
 
-    float vertices[] = {
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.0f, 0.5f, 0.0f};
+    // Left triangle.
+    float leftTriangleVertices[] = {
+        -0.75, 0.75, 0.0,  // top left
+        -0.75, -0.75, 0.0, // bottom left
+        0.0, -0.75, 0.0    // bottom right
+    };
 
-    // Create 1 vertex buffer object.
-    unsigned int VBO;
-    glGenBuffers(1, &VBO);
+    unsigned int leftVBO;
+    glGenBuffers(1, &leftVBO);
 
-    // Create 1 vertex array object.
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
+    unsigned int leftVAO;
+    glGenVertexArrays(1, &leftVAO);
+    glBindVertexArray(leftVAO);
 
-    // Copy vertices into vertex buffer.
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, leftVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(leftTriangleVertices), leftTriangleVertices, GL_STATIC_DRAW);
 
-    // Set vertex attribute pointers.
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+    glEnableVertexAttribArray(0);
+
+    // Right triangle.
+    float rightTriangleVertices[] = {
+        0.0, 0.75, 0.0,  // top left
+        0.0, -0.75, 0.0, // bottom left
+        0.75, -0.75, 0.0 // bottom right
+    };
+
+    unsigned int rightVBO;
+    glGenBuffers(1, &rightVBO);
+
+    unsigned int rightVAO;
+    glGenVertexArrays(1, &rightVAO);
+    glBindVertexArray(rightVAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, rightVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(rightTriangleVertices), rightTriangleVertices, GL_STATIC_DRAW);
+
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);
 
@@ -128,7 +146,9 @@ int main()
 
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
+        glBindVertexArray(leftVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glBindVertexArray(rightVAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
         glfwSwapBuffers(window);
