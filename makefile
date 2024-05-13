@@ -1,4 +1,4 @@
-.PHONY: main main-rect
+.PHONY: main simple-rect chromatic-rect
 
 COMPILER = clang++
 CFLAGS = -std=c++17 -fdiagnostics-color=always -Wall -g -Iinclude -Llib
@@ -8,5 +8,8 @@ SOURCES = src/glad.c
 main:
 	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/main.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
 
-main-rect:
-	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/main-rect.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
+simple-rect:
+	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/simple-rect.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
+
+chromatic-rect:
+	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/chromatic-rect.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
