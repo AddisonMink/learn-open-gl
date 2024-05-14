@@ -1,4 +1,4 @@
-.PHONY: main simple-rect chromatic-rect texture-rect transform-rect
+.PHONY: main simple-rect chromatic-rect texture-rect transform-rect rotating-cube
 
 COMPILER = clang++
 CFLAGS = -std=c++17 -fdiagnostics-color=always -Wall -g -Iinclude -Llib
@@ -19,3 +19,6 @@ texture-rect:
 
 transform-rect:
 	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/transform-rect.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
+
+rotating-cube:
+	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/rotating-cube.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
