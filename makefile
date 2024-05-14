@@ -22,3 +22,6 @@ transform-rect:
 
 rotating-cube:
 	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/rotating-cube.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
+
+flying-camera:
+	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/flying-camera.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
