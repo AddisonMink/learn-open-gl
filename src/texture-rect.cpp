@@ -104,7 +104,6 @@ int main()
         processInput(window);
 
         shader.use();
-        glUniform1i(glGetUniformLocation(shader.ID, "texture1"), 0);
         shader.setInt("texture1", 0);
         shader.setInt("texture2", 1);
 

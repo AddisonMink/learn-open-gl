@@ -1,4 +1,4 @@
-.PHONY: main simple-rect chromatic-rect texture-rect
+.PHONY: main simple-rect chromatic-rect texture-rect transform-rect
 
 COMPILER = clang++
 CFLAGS = -std=c++17 -fdiagnostics-color=always -Wall -g -Iinclude -Llib
@@ -16,3 +16,6 @@ chromatic-rect:
 
 texture-rect:
 	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/texture-rect.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
+
+transform-rect:
+	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/transform-rect.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
