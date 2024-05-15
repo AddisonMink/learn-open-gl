@@ -1,4 +1,4 @@
-.PHONY: main simple-rect chromatic-rect texture-rect transform-rect rotating-cube
+.PHONY: main simple-rect chromatic-rect texture-rect transform-rect rotating-cube flying-camera phong-cube
 
 COMPILER = clang++
 CFLAGS = -std=c++17 -fdiagnostics-color=always -Wall -g -Iinclude -Llib
@@ -25,3 +25,6 @@ rotating-cube:
 
 flying-camera:
 	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/flying-camera.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
+
+phong-cube:
+	$(COMPILER) $(CFLAGS) -o program $(SOURCES) src/phong-cube.cpp $(LIBS) -Wl,-rpath,@executable_path/lib
